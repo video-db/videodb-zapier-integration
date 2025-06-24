@@ -1,0 +1,25 @@
+export const ApiPath = {
+  collection: "collection",
+  upload: "upload",
+  video: "video",
+  audio: "audio",
+  image: "image",
+  stream: "stream",
+  thumbnail: "thumbnail",
+  upload_url: "upload_url",
+  transcription: "transcription",
+  index: "index",
+  search: "search",
+  compile: "compile",
+  workflow: "workflow",
+  delete: "delete",
+  describe: "describe",
+  scene: "scene",
+  scenes: "scenes",
+  timeline: "timeline",
+  frame: "frame",
+  rtstream: "rtstream",
+  storage: "storage",
+};
+
+export const VIDEO_DB_API = "https://api.videodb.io";

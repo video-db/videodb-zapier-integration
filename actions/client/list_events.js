@@ -1,0 +1,31 @@
+import { VIDEO_DB_API, ApiPath } from "../../core/constants.js";
+
+const perform = async (z, bundle) => {
+  const response = await fetch(`${VIDEO_DB_API}/${ApiPath.rtstream}/event`, {
+    headers: {
+      "x-access-token": bundle.authData.api_key,
+      "Content-Type": "application/json",
+      "x-videodb-client": "videodb-python/0.2.14",
+    },
+  });
+  const result = await response.json();
+  return result.data.events;
+};
+
+export const listEvents = {
+  key: "list_events",
+  noun: "Event",
+  display: {
+    label: "List Events",
+    description: "Lists all RTStream events.",
+  },
+  operation: {
+    inputFields: [],
+    perform,
+    sample: {
+      event_id: "evt-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      event_prompt: "Detect applause",
+      label: "applause",
+    },
+  },
+};
