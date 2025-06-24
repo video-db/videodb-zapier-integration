@@ -24,7 +24,7 @@ export const generateRtstreamStream = {
   key: "generate_rtstream_stream",
   noun: "Stream",
   display: {
-    label: "Generate Stream from Real-Time Stream",
+    label: "Generate Stream From Real-Time Stream",
     description:
       "Generates a playable stream from the rtstream for a given time range.",
   },
