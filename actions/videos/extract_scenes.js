@@ -3,7 +3,7 @@ import { VIDEO_DB_API, ApiPath } from "../../core/constants.js";
 const perform = async (z, bundle) => {
   const data = {
     extraction_type: bundle.inputData.extraction_type,
-    extraction_config: bundle.inputData.extraction_config,
+    extraction_config: {},
     force: bundle.inputData.force,
     callback_url: bundle.inputData.callback_url,
   };
@@ -15,14 +15,14 @@ const perform = async (z, bundle) => {
       headers: {
         "x-access-token": bundle.authData.api_key,
         "Content-Type": "application/json",
-        "x-videodb-client": "videodb-python/0.2.14",
+        "x-videodb-client": "videodb-python/0.2.15",
       },
       body: JSON.stringify(data),
     }
   );
 
   const result = await response.json();
-  return result.data.scene_collection;
+  return result.data;
 };
 
 export const extractScenes = {
@@ -35,6 +35,13 @@ export const extractScenes = {
   },
   operation: {
     inputFields: [
+      {
+        key: "collection_id",
+        required: true,
+        type: "string",
+        label: "Collection ID",
+        dynamic: "get_collections.id.name",
+      },
       {
         key: "video_id",
         required: true,

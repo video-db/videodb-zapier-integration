@@ -14,14 +14,14 @@ const perform = async (z, bundle) => {
       headers: {
         "x-access-token": bundle.authData.api_key,
         "Content-Type": "application/json",
-        "x-videodb-client": "videodb-python/0.2.14",
+        "x-videodb-client": "videodb-python/0.2.15",
       },
       body: JSON.stringify(data),
     }
   );
 
   const result = await response.json();
-  return result.data.translated_transcript;
+  return result.data;
 };
 
 export const translateTranscript = {

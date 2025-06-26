@@ -5,14 +5,14 @@ const perform = async (z, bundle) => {
     headers: {
       "x-access-token": bundle.authData.api_key,
       "Content-Type": "application/json",
-      "x-videodb-client": "videodb-python/0.2.14",
+      "x-videodb-client": "videodb-python/0.2.15",
     },
   });
 
   const data = await response.json();
   // The API returns an object with a `data` property which is an array of streams.
   // Zapier expects an array of objects to be returned from a search.
-  return data.data.results;
+  return data.data;
 };
 
 export const listRtstreams = {
