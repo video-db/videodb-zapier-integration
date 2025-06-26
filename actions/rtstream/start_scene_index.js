@@ -12,7 +12,7 @@ const perform = async (z, bundle) => {
       headers: {
         "x-access-token": bundle.authData.api_key,
         "Content-Type": "application/json",
-        "x-videodb-client": "videodb-python/0.2.14",
+        "x-videodb-client": "videodb-python/0.2.15",
       },
       body: JSON.stringify(data),
     }
@@ -42,6 +42,7 @@ export const startRtstreamSceneIndex = {
         required: true,
         type: "string",
         label: "Real-Time Stream Index ID",
+        dynamic: "list_rtstream_scene_indexes.rtstream_index_id.name",
       },
     ],
     perform,
