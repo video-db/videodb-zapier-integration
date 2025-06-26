@@ -90,6 +90,11 @@ import { getAudiosTrigger } from './triggers/get_audios.js';
 import { getImagesTrigger } from './triggers/get_images.js';
 import { getVideosTrigger } from './triggers/get_videos.js';
 import { listRtstreamsTrigger } from './triggers/list_rtstreams.js';
+import { listRtstreamSceneIndexesTrigger } from './triggers/list_rtstream_scene_indexes.js';
+import { listSceneCollectionsTrigger } from './triggers/list_scene_collections.js';
+import { listSceneIndexTrigger } from './triggers/list_scene_index.js';
+import { listRtstreamAlertsTrigger } from './triggers/list_rtstream_alerts.js';
+import { listEventsTrigger } from './triggers/list_events.js';
 
 export default {
   version: packageJson.version,
@@ -101,6 +106,11 @@ export default {
     [getImagesTrigger.key]: getImagesTrigger,
     [getVideosTrigger.key]: getVideosTrigger,
     [listRtstreamsTrigger.key]: listRtstreamsTrigger,
+    [listRtstreamSceneIndexesTrigger.key]: listRtstreamSceneIndexesTrigger,
+    [listSceneCollectionsTrigger.key]: listSceneCollectionsTrigger,
+    [listSceneIndexTrigger.key]: listSceneIndexTrigger,
+    [listRtstreamAlertsTrigger.key]: listRtstreamAlertsTrigger,
+    [listEventsTrigger.key]: listEventsTrigger,
   },
   creates: {
     [deleteCollection.key]: deleteCollection,
@@ -165,7 +175,6 @@ export default {
     [getThumbnails.key]: getThumbnails,
     [getTranscript.key]: getTranscript,
     [getTranscriptText.key]: getTranscriptText,
-    [getScenes.key]: getScenes,
     [getSceneCollection.key]: getSceneCollection,
     [listSceneCollection.key]: listSceneCollection,
     [listSceneIndex.key]: listSceneIndex,

@@ -12,7 +12,7 @@ const perform = async (z, bundle) => {
       headers: {
         "x-access-token": bundle.authData.api_key,
         "Content-Type": "application/json",
-        "x-videodb-client": "videodb-python/0.2.14",
+        "x-videodb-client": "videodb-python/0.2.15",
       },
       body: JSON.stringify(data),
     }
@@ -31,6 +31,13 @@ export const generateThumbnail = {
   },
   operation: {
     inputFields: [
+      {
+        key: "collection_id",
+        required: true,
+        type: "string",
+        label: "Collection ID",
+        dynamic: "get_collections.id.name",
+      },
       {
         key: "video_id",
         required: true,

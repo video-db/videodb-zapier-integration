@@ -10,7 +10,7 @@ const perform = async (z, bundle) => {
     headers: {
       "x-access-token": bundle.authData.api_key,
       "Content-Type": "application/json",
-      "x-videodb-client": "videodb-python/0.2.14",
+      "x-videodb-client": "videodb-python/0.2.15",
     },
   });
 
@@ -23,11 +23,18 @@ export const getScenes = {
   key: "get_scenes",
   noun: "Scene",
   display: {
-    label: "Get Scenes (Deprecated)",
-    description: "Retrieves the scenes of a video. [DEPRECATED]",
+    label: "Get Scenes",
+    description: "Retrieves the scenes of a video.",
   },
   operation: {
     inputFields: [
+      {
+        key: "collection_id",
+        required: true,
+        type: "string",
+        label: "Collection ID",
+        dynamic: "get_collections.id.name",
+      },
       {
         key: "video_id",
         required: true,

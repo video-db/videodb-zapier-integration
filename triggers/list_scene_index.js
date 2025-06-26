@@ -1,8 +1,8 @@
-import { VIDEO_DB_API, ApiPath } from "../../core/constants.js";
+import { VIDEO_DB_API, ApiPath } from "../core/constants.js";
 
 const perform = async (z, bundle) => {
   const url = new URL(
-    `${VIDEO_DB_API}/${ApiPath.video}/${bundle.inputData.video_id}/index/scene/${bundle.inputData.scene_index_id}`
+    `${VIDEO_DB_API}/${ApiPath.video}/${bundle.inputData.video_id}/index/scene`
   );
   url.searchParams.append("collection_id", bundle.inputData.collection_id);
 
@@ -15,17 +15,19 @@ const perform = async (z, bundle) => {
   });
 
   const data = await response.json();
-  return data.data.scene_index_records;
+  return data.data.scene_indexes;
 };
 
-export const getSceneIndex = {
-  key: "get_scene_index",
+export const listSceneIndexTrigger = {
+  key: "list_scene_index",
   noun: "Scene Index",
   display: {
-    label: "Get Scene Index",
-    description: "Retrieves a specific scene index.",
+    label: "List Scene Indexes",
+    description: "Lists all the scene indexes for a video.",
+    hidden: true,
   },
   operation: {
+    type: "polling",
     inputFields: [
       {
         key: "collection_id",
@@ -41,19 +43,11 @@ export const getSceneIndex = {
         label: "Video ID",
         dynamic: "get_videos.id.name",
       },
-      {
-        key: "scene_index_id",
-        required: true,
-        type: "string",
-        label: "Scene Index ID",
-        dynamic: "list_scene_index.id.name",
-      },
     ],
     perform,
     sample: {
-      start: 0.0,
-      end: 5.5,
-      description: "A person walking on the beach at sunset.",
+      id: "si-xxxxxxxxx",
+      name: "My Custom Scene Index",
     },
   },
 };

@@ -11,15 +11,18 @@ const perform = async (z, bundle) => {
     callback_url: bundle.inputData.callback_url,
   };
 
-  const response = await fetch(`${VIDEO_DB_API}/${ApiPath.upload_url}`, {
-    method: "POST",
-    headers: {
-      "x-access-token": bundle.authData.api_key,
-      "Content-Type": "application/json",
-      "x-videodb-client": "videodb-python/0.2.14",
-    },
-    body: JSON.stringify(data),
-  });
+  const response = await fetch(
+    `${VIDEO_DB_API}/${ApiPath.collection}/${bundle.inputData.collection_id}/${ApiPath.upload}`,
+    {
+      method: "POST",
+      headers: {
+        "x-access-token": bundle.authData.api_key,
+        "Content-Type": "application/json",
+        "x-videodb-client": "videodb-python/0.2.15",
+      },
+      body: JSON.stringify(data),
+    }
+  );
 
   return response.json();
 };
@@ -33,6 +36,13 @@ export const upload = {
   },
   operation: {
     inputFields: [
+      {
+        key: "collection_id",
+        required: true,
+        type: "string",
+        label: "Collection ID",
+        dynamic: "get_collections.id.name",
+      },
       { key: "url", required: true, type: "string", label: "File URL" },
       {
         key: "media_type",
