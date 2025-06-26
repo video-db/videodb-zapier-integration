@@ -6,7 +6,6 @@ export const ApiPath = {
   image: "image",
   stream: "stream",
   thumbnail: "thumbnail",
-  upload_url: "upload_url",
   transcription: "transcription",
   index: "index",
   search: "search",
@@ -20,6 +19,9 @@ export const ApiPath = {
   frame: "frame",
   rtstream: "rtstream",
   storage: "storage",
+  status: "status",
+  alert: "alert",
+  event: "event",
 };
 
 export const VIDEO_DB_API = "https://api.videodb.io";
