@@ -1,29 +1,40 @@
 import { VIDEO_DB_API, ApiPath } from "../../core/constants.js";
 
+const DEFAULT_RESULT_THRESHOLD = 5;
+const DEFAULT_SCORE_THRESHOLD = 0.2;
+
 const perform = async (z, bundle) => {
   const data = {
-    collection_id: bundle.inputData.collection_id,
     query: bundle.inputData.query,
     search_type: bundle.inputData.search_type,
     index_type: bundle.inputData.index_type,
-    result_threshold: bundle.inputData.result_threshold,
-    score_threshold: bundle.inputData.score_threshold,
+    result_threshold:
+      bundle.inputData.result_threshold !== undefined &&
+      bundle.inputData.result_threshold !== null
+        ? bundle.inputData.result_threshold
+        : DEFAULT_RESULT_THRESHOLD,
+    score_threshold:
+      bundle.inputData.score_threshold !== undefined &&
+      bundle.inputData.score_threshold !== null
+        ? bundle.inputData.score_threshold
+        : DEFAULT_SCORE_THRESHOLD,
     dynamic_score_percentage: bundle.inputData.dynamic_score_percentage,
-    filter: bundle.inputData.filter,
   };
 
-  const response = await fetch(`${VIDEO_DB_API}/${ApiPath.search}`, {
-    method: "POST",
-    headers: {
-      "x-access-token": bundle.authData.api_key,
-      "Content-Type": "application/json",
-      "x-videodb-client": "videodb-python/0.2.14",
-    },
-    body: JSON.stringify(data),
-  });
+  const response = await fetch(
+    `${VIDEO_DB_API}/${ApiPath.collection}/${bundle.inputData.collection_id}/${ApiPath.search}`,
+    {
+      method: "POST",
+      headers: {
+        "x-access-token": bundle.authData.api_key,
+        "Content-Type": "application/json",
+        "x-videodb-client": "videodb-python/0.2.15",
+      },
+      body: JSON.stringify(data),
+    }
+  );
 
   const results = await response.json();
-  // The API returns an array of search results, which is what Zapier expects.
   return results.data.results;
 };
 
@@ -49,7 +60,7 @@ export const search = {
         required: false,
         type: "string",
         label: "Search Type",
-        choices: ["semantic", "keyword", "scene", "llm"],
+        choices: ["semantic"],
       },
       {
         key: "index_type",
