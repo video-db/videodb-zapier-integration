@@ -1,19 +1,35 @@
 import { VIDEO_DB_API } from "../../core/constants.js";
 
 const perform = async (z, bundle) => {
+  const video_config = {
+    resolution: bundle.inputData.resolution || undefined,
+    quality:
+      bundle.inputData.quality !== undefined &&
+      bundle.inputData.quality !== null
+        ? bundle.inputData.quality
+        : 23,
+    framerate: bundle.inputData.framerate || undefined,
+    resize_mode: bundle.inputData.resize_mode || "crop",
+  };
+  const audio_config = {
+    mute:
+      bundle.inputData.mute !== undefined && bundle.inputData.mute !== null
+        ? bundle.inputData.mute
+        : false,
+  };
   const data = {
     source: bundle.inputData.source,
     callback_url: bundle.inputData.callback_url,
     mode: bundle.inputData.mode,
-    video_config: bundle.inputData.video_config,
-    audio_config: bundle.inputData.audio_config,
+    video_config,
+    audio_config,
   };
   const response = await fetch(`${VIDEO_DB_API}/transcode`, {
     method: "POST",
     headers: {
       "x-access-token": bundle.authData.api_key,
       "Content-Type": "application/json",
-      "x-videodb-client": "videodb-python/0.2.14",
+      "x-videodb-client": "videodb-python/0.2.15",
     },
     body: JSON.stringify(data),
   });
@@ -38,7 +54,7 @@ export const transcode = {
       },
       {
         key: "callback_url",
-        required: false,
+        required: true,
         type: "string",
         label: "Callback URL",
       },
@@ -47,19 +63,44 @@ export const transcode = {
         required: false,
         type: "string",
         label: "Mode",
-        choices: ["economy", "high_quality"],
+        choices: ["lightning", "economy"],
+      },
+      // Video Config fields
+      {
+        key: "resolution",
+        required: false,
+        type: "integer",
+        label: "Resolution",
+        helpText: "e.g., 1080 for 1080p, 720 for 720p, etc.",
       },
       {
-        key: "video_config",
+        key: "quality",
         required: false,
-        type: "string",
-        label: "Video Config (JSON)",
+        type: "integer",
+        label: "Quality",
+        helpText: "Lower is better quality. Default is 23.",
       },
       {
-        key: "audio_config",
+        key: "framerate",
+        required: false,
+        type: "integer",
+        label: "Framerate",
+        helpText: "Frames per second (fps)",
+      },
+      {
+        key: "resize_mode",
         required: false,
         type: "string",
-        label: "Audio Config (JSON)",
+        label: "Resize Mode",
+        choices: ["crop", "fit", "pad"],
+      },
+      // Audio Config fields
+      {
+        key: "mute",
+        required: false,
+        type: "boolean",
+        label: "Mute Audio",
+        helpText: "Mute the audio track (default: false)",
       },
     ],
     perform,
