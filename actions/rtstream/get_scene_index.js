@@ -37,7 +37,7 @@ export const getRtstreamSceneIndex = {
         required: true,
         type: "string",
         label: "Scene Index ID",
-        dynamic: "list_rtstream_scene_indexes.rtstream_index_id.name",
+        dynamic: "list_rtstream_scene_indexes.id.name",
       },
     ],
     perform,
