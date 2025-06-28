@@ -1,9 +1,18 @@
 import { VIDEO_DB_API, ApiPath } from "../../core/constants.js";
 
 const perform = async (z, bundle) => {
+  const extraction_config = {
+    frame_count:
+      bundle.inputData.frame_count !== undefined
+        ? Number(bundle.inputData.frame_count)
+        : 2,
+    time:
+      bundle.inputData.time !== undefined ? Number(bundle.inputData.time) : 5,
+  };
+
   const data = {
     extraction_type: bundle.inputData.extraction_type,
-    extraction_config: bundle.inputData.extraction_config,
+    extraction_config,
     prompt: bundle.inputData.prompt,
     model_name: bundle.inputData.model_name,
     model_config: bundle.inputData.model_config,
@@ -59,6 +68,20 @@ export const indexRtstreamScenes = {
         label: "Model Name",
       },
       { key: "name", required: false, type: "string", label: "Index Name" },
+      {
+        key: "frame_count",
+        required: false,
+        type: "integer",
+        label: "Frame Count",
+        helpText: "Number of frames per scene (default: 2)",
+      },
+      {
+        key: "time",
+        required: false,
+        type: "integer",
+        label: "Time Interval (seconds)",
+        helpText: "Time interval for scene extraction (default: 5)",
+      },
     ],
     perform,
     sample: {
