@@ -19,7 +19,7 @@ const perform = async (z, bundle) => {
     }
   );
   const result = await response.json();
-  return result.data;
+  return result;
 };
 
 export const addSubtitle = {

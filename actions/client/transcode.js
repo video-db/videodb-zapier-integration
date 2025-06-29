@@ -34,7 +34,7 @@ const perform = async (z, bundle) => {
     body: JSON.stringify(data),
   });
   const result = await response.json();
-  return result.data;
+  return result;
 };
 
 export const transcode = {

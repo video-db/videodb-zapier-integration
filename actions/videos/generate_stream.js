@@ -34,7 +34,7 @@ const perform = async (z, bundle) => {
   );
 
   const result = await streamResponse.json();
-  return result.data;
+  return result;
 };
 
 export const generateVideoStream = {

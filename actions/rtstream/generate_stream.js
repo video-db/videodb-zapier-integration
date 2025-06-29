@@ -16,8 +16,7 @@ const perform = async (z, bundle) => {
   });
 
   const data = await response.json();
-  // It's a search, so return an array
-  return data.data;
+  return data;
 };
 
 export const generateRtstreamStream = {

@@ -1,8 +1,6 @@
 import { VIDEO_DB_API, ApiPath } from "../../core/constants.js";
 
 const perform = async (z, bundle) => {
-  // This action will upload a media file from a URL.
-  // The 'file_path' option is not suitable for a web-based platform like Zapier.
   const data = {
     url: bundle.inputData.url,
     media_type: bundle.inputData.media_type,
@@ -24,7 +22,8 @@ const perform = async (z, bundle) => {
     }
   );
 
-  return response.json();
+  const json = await response.json();
+  return json;
 };
 
 export const upload = {
