@@ -13,7 +13,11 @@ const perform = async (z, bundle) => {
   );
 
   const data = await response.json();
-  return data.data.alerts;
+  return (data.data.alerts || []).map((item) => ({
+    ...item,
+    id: item.alert_id,
+    name: item.label,
+  }));
 };
 
 export const listRtstreamAlertsTrigger = {

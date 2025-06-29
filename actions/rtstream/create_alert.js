@@ -52,7 +52,7 @@ export const createRtstreamAlert = {
         required: true,
         type: "string",
         label: "Event ID",
-        dynamic: "list_events_trigger.event_id.label",
+        dynamic: "list_events_trigger.id.name",
       },
       {
         key: "callback_url",

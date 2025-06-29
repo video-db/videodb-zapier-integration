@@ -49,7 +49,7 @@ export const enableRtstreamAlert = {
         required: true,
         type: "string",
         label: "Alert ID",
-        dynamic: "list_rtstream_alerts_trigger.alert_id.label",
+        dynamic: "list_rtstream_alerts_trigger.id.name",
       },
     ],
     perform,

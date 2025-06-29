@@ -9,7 +9,11 @@ const perform = async (z, bundle) => {
     },
   });
   const result = await response.json();
-  return result.data.events;
+  return (result.data.events || []).map((item) => ({
+    ...item,
+    id: item.event_id,
+    name: item.label,
+  }));
 };
 
 export const listEventsTrigger = {
