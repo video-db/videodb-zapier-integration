@@ -14,7 +14,11 @@ const perform = async (z, bundle) => {
   });
 
   const data = await response.json();
-  return data.data.scene_collections;
+  return (data.data.scene_collections || []).map((item) => ({
+    ...item,
+    id: item.scene_collection_id,
+    name: item.scene_collection_id,
+  }));
 };
 
 export const listSceneCollectionsTrigger = {

@@ -15,7 +15,11 @@ const perform = async (z, bundle) => {
   });
 
   const data = await response.json();
-  return data.data.scene_indexes;
+  return (data.data.scene_indexes || []).map((item) => ({
+    ...item,
+    id: item.scene_index_id,
+    name: item.name,
+  }));
 };
 
 export const listSceneIndexTrigger = {
