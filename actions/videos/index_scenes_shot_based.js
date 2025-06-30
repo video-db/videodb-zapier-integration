@@ -5,9 +5,11 @@ const perform = async (z, bundle) => {
     frame_count:
       bundle.inputData.frame_count !== undefined
         ? Number(bundle.inputData.frame_count)
-        : 2,
-    time:
-      bundle.inputData.time !== undefined ? Number(bundle.inputData.time) : 5,
+        : 4,
+    threshold:
+      bundle.inputData.threshold !== undefined
+        ? Number(bundle.inputData.threshold)
+        : 20,
   };
   const data = {
     extraction_type: bundle.inputData.extraction_type,
@@ -33,12 +35,12 @@ const perform = async (z, bundle) => {
   return result;
 };
 
-export const indexScenes = {
-  key: "index_scenes",
-  noun: "Scene Index (Time based)",
+export const indexScenesShotBased = {
+  key: "index_scenes_shot_based",
+  noun: "Scene Index (Shot based)",
   display: {
-    label: "Index Scenes (Time Based)",
-    description: "Indexes the scenes of a video (time based).",
+    label: "Index Scenes (Shot Based)",
+    description: "Indexes the scenes of a video (shot based).",
   },
   operation: {
     inputFields: [
@@ -61,7 +63,7 @@ export const indexScenes = {
         required: false,
         type: "string",
         label: "Extraction Type",
-        choices: ["time"],
+        choices: ["shot"],
       },
       { key: "prompt", required: false, type: "string", label: "Prompt" },
       { key: "name", required: false, type: "string", label: "Index Name" },
@@ -73,11 +75,11 @@ export const indexScenes = {
         helpText: "Number of frames per scene (default: 2)",
       },
       {
-        key: "time",
+        key: "threshold",
         required: false,
         type: "integer",
-        label: "Time Interval (seconds)",
-        helpText: "Time interval for scene extraction (default: 5)",
+        label: "Threshold",
+        helpText: "Threshold for scene extraction (default: 20)",
       },
       {
         key: "callback_url",
