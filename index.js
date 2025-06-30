@@ -46,6 +46,7 @@ import { getSceneCollection } from './actions/videos/get_scene_collection.js';
 import { listSceneCollection } from './actions/videos/list_scene_collection.js';
 import { deleteSceneCollection } from './actions/videos/delete_scene_collection.js';
 import { indexScenes } from './actions/videos/index_scenes.js';
+import { indexScenesShotBased } from './actions/videos/index_scenes_shot_based.js';
 import { listSceneIndex } from './actions/videos/list_scene_index.js';
 import { getSceneIndex } from './actions/videos/get_scene_index.js';
 import { deleteSceneIndex } from './actions/videos/delete_scene_index.js';
@@ -135,6 +136,7 @@ export default {
     [extractScenes.key]: extractScenes,
     [deleteSceneCollection.key]: deleteSceneCollection,
     [indexScenes.key]: indexScenes,
+    [indexScenesShotBased.key]: indexScenesShotBased,
     [deleteSceneIndex.key]: deleteSceneIndex,
     [addSubtitle.key]: addSubtitle,
     [startRtstream.key]: startRtstream,
