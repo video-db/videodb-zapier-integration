@@ -12,7 +12,11 @@ const perform = async (z, bundle) => {
     }
   );
   const result = await response.json();
-  return [result.data];
+  if (result?.data) {
+    return [result.data];
+  } else {
+    return [result.data];
+  }
 };
 
 export const getCollection = {

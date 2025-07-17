@@ -13,7 +13,7 @@ const perform = async (z, bundle) => {
   );
 
   const data = await response.json();
-  return data.data.alerts;
+  return data?.data?.alerts ?? [];
 };
 
 export const listRtstreamAlerts = {

@@ -26,7 +26,11 @@ const perform = async (z, bundle) => {
 
   const data = await response.json();
   // The API returns an object with a `transcript` property which is an array of objects.
-  return data.data.word_timestamps;
+  if (data?.data && data?.data?.word_timestamps) {
+    return data.data.word_timestamps;
+  } else {
+    return [];
+  }
 };
 
 export const getTranscript = {

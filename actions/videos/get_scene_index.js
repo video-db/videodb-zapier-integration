@@ -15,7 +15,7 @@ const perform = async (z, bundle) => {
   });
 
   const data = await response.json();
-  return data.data.scene_index_records;
+  return data?.data?.scene_index_records ?? [];
 };
 
 export const getSceneIndex = {

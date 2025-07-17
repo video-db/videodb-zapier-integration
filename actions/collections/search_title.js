@@ -21,7 +21,11 @@ const perform = async (z, bundle) => {
 
   const results = await response.json();
   // The API returns an array of search results, which is what Zapier expects.
-  return results.data.map((result) => result.video);
+  if (results?.data) {
+    return results.data.map((result) => result.video);
+  } else {
+    return [];
+  }
 };
 
 export const searchTitle = {

@@ -35,7 +35,7 @@ const perform = async (z, bundle) => {
   );
 
   const results = await response.json();
-  return results.data.results;
+  return results?.data?.results ?? [];
 };
 
 export const search = {

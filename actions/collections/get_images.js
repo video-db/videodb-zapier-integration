@@ -15,7 +15,7 @@ const perform = async (z, bundle) => {
   const data = await response.json();
   // The API returns an object with a `data` property which is an array of images.
   // Zapier expects an array of objects to be returned from a search.
-  return data.data.images;
+  return data?.data?.images ?? [];
 };
 
 export const getImages = {

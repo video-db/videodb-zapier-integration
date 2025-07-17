@@ -16,7 +16,7 @@ const perform = async (z, bundle) => {
 
   const data = await response.json();
   // The API returns an array of scene collections.
-  return data.data.scene_collections;
+  return data?.data?.scene_collections ?? [];
 };
 
 export const listSceneCollection = {

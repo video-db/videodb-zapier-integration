@@ -15,7 +15,11 @@ const perform = async (z, bundle) => {
   const data = await response.json();
   // The API returns an object with a `data` property which is an array of strings (URLs).
   // We need to map this to an array of objects for Zapier.
-  return data.data;
+  if (data?.data) {
+    return data;
+  } else {
+    return [];
+  }
 };
 
 export const getThumbnails = {

@@ -15,7 +15,7 @@ const perform = async (z, bundle) => {
   const data = await response.json();
   // The API returns an object with a `data` property which is an array of videos.
   // Zapier expects an array of objects to be returned from a search.
-  return data.data.videos;
+  return data?.data?.videos ?? [];
 };
 
 export const getVideos = {

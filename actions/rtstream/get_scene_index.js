@@ -13,7 +13,11 @@ const perform = async (z, bundle) => {
   );
 
   const data = await response.json();
-  return [data.data];
+  if (data?.data) {
+    return [data.data];
+  } else {
+    return [];
+  }
 };
 
 export const getRtstreamSceneIndex = {

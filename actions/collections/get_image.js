@@ -15,7 +15,12 @@ const perform = async (z, bundle) => {
   const data = await response.json();
   // A search action should return an array of objects.
   // Since we are fetching a single image, we return it in an array.
-  return [data.data];
+
+  if (data?.data) {
+    return [data.data];
+  } else {
+    return [];
+  }
 };
 
 export const getImage = {

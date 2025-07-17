@@ -26,9 +26,13 @@ const perform = async (z, bundle) => {
 
   const data = await response.json();
   // We expect a plain text response, so we'll join the words.
-  const text = data.data.text;
+  const text = data?.data?.text;
   // A search action must return an array.
-  return [{ transcript_text: text }];
+  if (text) {
+    return [{ transcript_text: text }];
+  } else {
+    return [];
+  }
 };
 
 export const getTranscriptText = {

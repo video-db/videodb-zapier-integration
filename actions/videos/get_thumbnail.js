@@ -14,7 +14,10 @@ const perform = async (z, bundle) => {
 
   const data = await response.json();
   // A search action should return an array of objects.
-  return [data.data];
+  if (data?.data) {
+    return [data.data];
+  }
+  return [];
 };
 
 export const getThumbnail = {

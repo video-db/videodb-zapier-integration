@@ -16,7 +16,11 @@ const perform = async (z, bundle) => {
 
   const data = await response.json();
   // A search action must return an array.
-  return [data.data.scene_collection];
+  if (data?.data?.scene_collection) {
+    return [data.data.scene_collection];
+  } else {
+    return [];
+  }
 };
 
 export const getSceneCollection = {
