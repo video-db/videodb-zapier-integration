@@ -42,8 +42,9 @@ export const search = {
   key: "search",
   noun: "Search Result",
   display: {
-    label: "Search Collection",
-    description: "Performs a search query across the collection.",
+    label: "Find Relevant Clips From a Collection",
+    description:
+      "Find the most relevant clips across all videos in a collection based on a search query.",
   },
   operation: {
     inputFields: [

@@ -28,9 +28,8 @@ export const searchTitle = {
   key: "search_title",
   noun: "Video",
   display: {
-    label: "Search Video Titles",
-    description:
-      "Searches for a query within the titles of videos in the collection.",
+    label: "Find Videos From Titles",
+    description: "Find videos in the collection based on their titles",
   },
   operation: {
     inputFields: [

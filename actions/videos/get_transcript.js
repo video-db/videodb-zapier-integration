@@ -33,8 +33,8 @@ export const getTranscript = {
   key: "get_transcript",
   noun: "Transcript",
   display: {
-    label: "Get Timestamped Transcript",
-    description: "Fetches the timestamped transcript of a video.",
+    label: "Find Timestamped Transcript",
+    description: "Finds the timestamped transcript of a video.",
   },
   operation: {
     inputFields: [

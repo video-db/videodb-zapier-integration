@@ -23,8 +23,8 @@ export const getSceneCollection = {
   key: "get_scene_collection",
   noun: "Scene Collection",
   display: {
-    label: "Get Scene Collection",
-    description: "Retrieves a specific collection of scenes from a video.",
+    label: "Find Scene Collection",
+    description: "Finds a specific collection of scenes from a video.",
   },
   operation: {
     inputFields: [

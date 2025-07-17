@@ -22,8 +22,8 @@ export const getThumbnails = {
   key: "get_thumbnails",
   noun: "Thumbnail",
   display: {
-    label: "Get All Thumbnails",
-    description: "Retrieves all the thumbnails associated with a video.",
+    label: "Find All Thumbnails",
+    description: "Find all the thumbnails associated with a video.",
   },
   operation: {
     inputFields: [

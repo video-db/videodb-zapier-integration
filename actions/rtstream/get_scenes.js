@@ -30,9 +30,9 @@ export const getRtstreamScenes = {
   key: "get_rtstream_scenes",
   noun: "Scene",
   display: {
-    label: "Get Scenes From Real-Time Stream Index",
+    label: "Find Scenes From Real-Time Stream Index",
     description:
-      "Retrieves scenes from a specific rtstream scene index, with optional filtering and pagination.",
+      "Find scenes from a specific rtstream scene index, with optional filtering and pagination.",
   },
   operation: {
     inputFields: [

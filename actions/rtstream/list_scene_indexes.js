@@ -20,8 +20,8 @@ export const listRtstreamSceneIndexes = {
   key: "list_rtstream_scene_indexes",
   noun: "Scene Index",
   display: {
-    label: "List Real-Time Stream Scene Indexes",
-    description: "Lists all scene indexes for the rtstream.",
+    label: "Find Real-Time Stream Scene Indexes",
+    description: "Find all scene indexes for the rtstream.",
   },
   operation: {
     inputFields: [

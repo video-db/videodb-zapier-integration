@@ -22,8 +22,8 @@ export const getVideo = {
   key: "get_video",
   noun: "Video",
   display: {
-    label: "Get Video",
-    description: "Retrieves a specific video by its ID from a collection.",
+    label: "Find Video",
+    description: "Finds a specific video by its ID from a collection.",
   },
   operation: {
     inputFields: [

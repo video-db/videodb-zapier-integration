@@ -19,8 +19,8 @@ export const getCollection = {
   key: "get_collection",
   noun: "Collection",
   display: {
-    label: "Get Collection",
-    description: "Fetches a single collection by its ID.",
+    label: "Find Collection",
+    description: "Finds a single collection by its ID.",
   },
   operation: {
     inputFields: [

@@ -20,8 +20,8 @@ export const getRtstreamSceneIndex = {
   key: "get_rtstream_scene_index",
   noun: "Scene Index",
   display: {
-    label: "Get Real-Time Stream Scene Index",
-    description: "Retrieves a specific scene index by its ID.",
+    label: "Find Real-Time Stream Scene Index",
+    description: "Find a specific scene index by its ID.",
   },
   operation: {
     inputFields: [

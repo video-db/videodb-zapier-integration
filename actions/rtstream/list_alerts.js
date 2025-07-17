@@ -20,8 +20,8 @@ export const listRtstreamAlerts = {
   key: "list_rtstream_alerts",
   noun: "Alert",
   display: {
-    label: "List Real-Time Stream Alerts",
-    description: "Lists all alerts for the rtstream scene index.",
+    label: "Find Real-Time Stream Alerts",
+    description: "Find all alerts for the rtstream scene index.",
   },
   operation: {
     inputFields: [

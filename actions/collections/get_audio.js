@@ -22,9 +22,8 @@ export const getAudio = {
   key: "get_audio",
   noun: "Audio",
   display: {
-    label: "Get Audio",
-    description:
-      "Retrieves a specific audio asset by its ID from a collection.",
+    label: "Find Audio",
+    description: "Finds a specific audio asset by its ID from a collection.",
   },
   operation: {
     inputFields: [

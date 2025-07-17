@@ -22,8 +22,8 @@ export const getRtstream = {
   key: "get_rtstream",
   noun: "RTStream",
   display: {
-    label: "Get Real-Time Stream",
-    description: "Retrieves a specific real-time stream by its ID.",
+    label: "Find Real-Time Stream",
+    description: "Finds a specific real-time stream by its ID.",
   },
   operation: {
     inputFields: [

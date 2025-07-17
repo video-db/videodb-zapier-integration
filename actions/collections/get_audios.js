@@ -22,8 +22,8 @@ export const getAudios = {
   key: "get_audios",
   noun: "Audio",
   display: {
-    label: "Get Audios",
-    description: "Retrieves a list of all audio assets within a collection.",
+    label: "Find Audios",
+    description: "Find all audio assets within a collection.",
   },
   operation: {
     inputFields: [

@@ -23,8 +23,8 @@ export const listSceneCollection = {
   key: "list_scene_collection",
   noun: "Scene Collection",
   display: {
-    label: "List Scene Collections",
-    description: "Lists all scene collections for a video.",
+    label: "Find Scene Collections",
+    description: "Find all scene collections for a video.",
   },
   operation: {
     inputFields: [

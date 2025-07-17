@@ -22,8 +22,8 @@ export const getSceneIndex = {
   key: "get_scene_index",
   noun: "Scene Index",
   display: {
-    label: "Get Scene Index",
-    description: "Retrieves a specific scene index.",
+    label: "Find Scene Index",
+    description: "Finds a specific scene index.",
   },
   operation: {
     inputFields: [

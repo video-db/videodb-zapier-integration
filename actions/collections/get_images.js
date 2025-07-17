@@ -22,8 +22,8 @@ export const getImages = {
   key: "get_images",
   noun: "Image",
   display: {
-    label: "Get Images",
-    description: "Retrieves a list of all images within a collection.",
+    label: "Find Images",
+    description: "Find all images within a collection.",
   },
   operation: {
     inputFields: [

@@ -21,8 +21,8 @@ export const getThumbnail = {
   key: "get_thumbnail",
   noun: "Thumbnail",
   display: {
-    label: "Get Default Thumbnail",
-    description: "Gets the default thumbnail URL for a video.",
+    label: "Find Default Thumbnail",
+    description: "Finds the default thumbnail URL for a video.",
   },
   operation: {
     inputFields: [

@@ -27,8 +27,8 @@ export const youtubeSearch = {
   key: "youtube_search",
   noun: "YouTube Search",
   display: {
-    label: "YouTube Search in Collection",
-    description: "Performs a YouTube search within a collection.",
+    label: "Find YouTube Videos",
+    description: "Find YouTube videos based on query",
   },
   operation: {
     inputFields: [

@@ -22,8 +22,8 @@ export const listSceneIndex = {
   key: "list_scene_index",
   noun: "Scene Index",
   display: {
-    label: "List Scene Indexes",
-    description: "Lists all the scene indexes for a video.",
+    label: "Find Scene Indexes",
+    description: "Find all the scene indexes for a video.",
   },
   operation: {
     inputFields: [

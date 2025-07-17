@@ -42,8 +42,8 @@ export const searchVideo = {
   key: "search_video",
   noun: "Search Result",
   display: {
-    label: "Search Video",
-    description: "Performs a search query within a specific video.",
+    label: "Find Relevant Clips From a Video",
+    description: "Find the most relevant clips across within a video",
   },
   operation: {
     inputFields: [

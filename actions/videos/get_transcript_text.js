@@ -35,8 +35,8 @@ export const getTranscriptText = {
   key: "get_transcript_text",
   noun: "Transcript Text",
   display: {
-    label: "Get Plain Text Transcript",
-    description: "Fetches the plain text transcript of a video.",
+    label: "Find Plain Text Transcript",
+    description: "Finds the plain text transcript of a video.",
   },
   operation: {
     inputFields: [
