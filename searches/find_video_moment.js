@@ -1,6 +1,17 @@
 import { ZAPIER_BACKEND_API, ApiPath } from "../core/constants.js";
 
 const perform = async (z, bundle) => {
+  const raw = bundle.inputData.target_labels;
+  const targetLabels = Array.isArray(raw)
+    ? raw
+    : typeof raw === "string" && raw.includes(",")
+    ? raw
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean)
+    : raw
+    ? [String(raw)]
+    : [];
   try {
     const response = await fetch(
       `${ZAPIER_BACKEND_API}/${ApiPath.search}/find_video_moment`,
@@ -15,19 +26,17 @@ const perform = async (z, bundle) => {
           video_id: bundle.inputData.video_id,
           prompt: bundle.inputData.prompt,
           content_type: bundle.inputData.content_type,
+          callback_url: bundle.inputData.callback_url,
+          target_labels: targetLabels,
         }),
       }
     );
 
     const data = await response.json();
 
-    if (!response.ok) {
-      return [];
-    }
-
-    return data.result_timestamps || [];
+    return data;
   } catch (error) {
-    return [];
+    return error;
   }
 };
 
@@ -70,14 +79,24 @@ export const findVideoMoment = {
         },
         default: "spoken_content",
       },
+      {
+        key: "callback_url",
+        required: false,
+        type: "string",
+        label: "Callback URL",
+      },
+      {
+        key: "target_labels",
+        required: false,
+        type: "string",
+        label: "Target Labels",
+        helpText: "Add one or more labels. Use “Add item” to enter more.",
+        list: true,
+      },
     ],
     perform,
     sample: {
-      stream_url: "https://stream.example.com/clip1",
-      download_url: "https://download.example.com/clip1.mp4",
-      start: 10.5,
-      end: 25.3,
-      text: "This is the text content of the first moment",
+      job_id: "job_12345",
     },
   },
 };

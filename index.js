@@ -47,9 +47,9 @@ export default {
     [instantBotJoin.key]: instantBotJoin,
     [summarizeVideo.key]: summarizeVideo,
     [uploadIndex.key]: uploadIndex,
+    [findVideoMoment.key]: findVideoMoment,
   },
   searches: {
-    [findVideoMoment.key]: findVideoMoment,
     [getMeetingAssets.key]: getMeetingAssets,
     [getTranscript.key]: getTranscript,
     [getVideoMetadata.key]: getVideoMetadata,
