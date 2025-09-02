@@ -1,27 +1,16 @@
 export const ApiPath = {
-  collection: "collection",
-  upload: "upload",
-  video: "video",
-  audio: "audio",
-  image: "image",
-  stream: "stream",
-  thumbnail: "thumbnail",
-  transcription: "transcription",
-  index: "index",
+  action: "action",
   search: "search",
-  compile: "compile",
-  workflow: "workflow",
-  delete: "delete",
-  describe: "describe",
-  scene: "scene",
-  scenes: "scenes",
-  timeline: "timeline",
-  frame: "frame",
-  rtstream: "rtstream",
-  storage: "storage",
-  status: "status",
-  alert: "alert",
-  event: "event",
+  trigger: "trigger",
+  collection: "collection",
 };
 
-export const VIDEO_DB_API = "https://api.videodb.io";
+export const ZAPIER_BACKEND_API =
+  (process.env.ENVFLAG === "dev"
+    ? process.env.DEV_BACKEND_API
+    : process.env.PROD_BACKEND_API) || "";
+
+export const VIDEODB_SERVER_API =
+  (process.env.ENVFLAG === "dev"
+    ? process.env.VIDEODB_DEV_SERVER_API
+    : process.env.VIDEODB_PROD_SERVER_API) || "";

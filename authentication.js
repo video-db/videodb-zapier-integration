@@ -1,4 +1,4 @@
-import { ApiPath, VIDEO_DB_API } from "./core/constants.js";
+import { VIDEODB_SERVER_API } from "./core/constants.js";
 export const authentication = {
   type: "custom",
   fields: [
@@ -13,7 +13,7 @@ export const authentication = {
     },
   ],
   test: async (z, bundle) => {
-    const response = await fetch(`${VIDEO_DB_API}/billing/usage`, {
+    const response = await fetch(`${VIDEODB_SERVER_API}/billing/usage`, {
       headers: {
         "x-access-token": bundle.authData.api_key,
         "Content-Type": "application/json",
