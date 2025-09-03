@@ -11,8 +11,8 @@ const perform = async (z, bundle) => {
         "x-videodb-client": "videodb-python/0.2.15",
       },
       body: JSON.stringify({
-        video_id: bundle.inputData.video_id,
         question: bundle.inputData.question,
+        index_type: bundle.inputData.index_type,
       }),
     }
   );
@@ -30,19 +30,22 @@ export const videoQna = {
   operation: {
     inputFields: [
       {
-        key: "video_id",
-        required: true,
-        type: "string",
-        label: "Video ID",
-        dynamic: "get_videos.id.name",
-        helpText: "The ID of the video to get the Q&A for",
-      },
-      {
         key: "question",
         required: true,
         type: "string",
         label: "Question",
         helpText: "The question to ask the video",
+      },
+      {
+        key: "index_type",
+        required: true,
+        type: "string",
+        label: "Index Type",
+        helpText: "Choose which index to use for Q&A",
+        choices: {
+          spoken_word: "Based on transcript data",
+          scene: "Based on visual data",
+        },
       },
     ],
     perform,

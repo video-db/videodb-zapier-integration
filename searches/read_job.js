@@ -37,17 +37,7 @@ export const checkJobStatus = {
     sample: {
       id: "job_12345",
       status: "completed",
-      output: {
-        name: "Video Name",
-        index: [{ end: 10.0, start: 0.0, metadata: {}, description: "" }],
-        length: 500,
-        index_id: "index_id",
-        video_id: "m-z-id",
-        stream_url: "https://stream_url.com",
-        download_url: "https://download_url.com",
-        collection_id: "c-default",
-        thumbnail_url: null,
-      },
+      output: {},
       error: null,
     },
   },

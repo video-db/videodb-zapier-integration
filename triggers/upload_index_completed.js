@@ -11,6 +11,7 @@ const subscribeHook = async (z, bundle) => {
     },
     body: {
       target_url: bundle.targetUrl,
+      target_label: bundle.inputData.target_label,
     },
   });
   return res.data;
@@ -59,6 +60,16 @@ export const uploadIndexCompletedTrigger = {
   },
   operation: {
     type: "hook",
+    inputFields: [
+      {
+        key: "target_label",
+        required: false,
+        type: "string",
+        label: "Target Label",
+        helpText:
+          "Only fire for upload jobs whose target_labels include this label.",
+      },
+    ],
     perform,
     performSubscribe: subscribeHook,
     performUnsubscribe: unsubscribeHook,

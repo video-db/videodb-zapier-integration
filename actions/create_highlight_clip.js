@@ -1,6 +1,18 @@
 import { ZAPIER_BACKEND_API, ApiPath } from "../core/constants.js";
 
 const perform = async (z, bundle) => {
+  const raw = bundle.inputData.content_type;
+  const contentTypes = Array.isArray(raw)
+    ? raw
+    : typeof raw === "string" && raw.includes(",")
+    ? raw
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean)
+    : raw
+    ? [String(raw)]
+    : ["multimodal"];
+
   const response = await fetch(
     `${ZAPIER_BACKEND_API}/${ApiPath.action}/create_highlight_clip`,
     {
@@ -13,7 +25,7 @@ const perform = async (z, bundle) => {
       body: JSON.stringify({
         video_id: bundle.inputData.video_id,
         prompt: bundle.inputData.prompt,
-        content_type: bundle.inputData.content_type || "spoken_content",
+        content_type: contentTypes,
       }),
     }
   );
@@ -51,13 +63,13 @@ export const createHighlightClip = {
         required: false,
         type: "string",
         label: "Content Type",
-        default: "spoken_content",
+        helpText: "One or more content types based on which clip is generated",
+        list: true,
         choices: {
           spoken_content: "Spoken Content",
           visual_content: "Visual Content",
           multimodal: "Multimodal",
         },
-        helpText: "Type of content based on which clip is to be generated",
       },
     ],
     perform,
