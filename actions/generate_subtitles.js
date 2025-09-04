@@ -39,8 +39,7 @@ export const generateSubtitles = {
     ],
     perform,
     sample: {
-      subtitle_text:
-        "1\n00:00:00,000 --> 00:00:03,000\nHello, welcome to this video.\n\n2\n00:00:03,000 --> 00:00:06,000\nToday we will discuss important topics.",
+      job_id: "job_12345",
     },
   },
 };

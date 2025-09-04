@@ -47,7 +47,7 @@ export const summarizeVideo = {
     ],
     perform,
     sample: {
-      text: "This video discusses the fundamentals of machine learning, covering topics such as supervised learning, unsupervised learning, and neural networks. The presenter explains key concepts with practical examples and demonstrates how to implement basic algorithms.",
+      job_id: "job_12345",
     },
   },
 };

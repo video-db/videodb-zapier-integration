@@ -46,7 +46,6 @@ export const getMeetingAssets = {
       status: "completed",
       time_zone: "America/New_York",
       video_id: "m-xxxxxxxxx",
-      summary: "The team discussed project progress and upcoming milestones.",
       transcript:
         "John: Good morning everyone. Let's start with project updates...",
     },

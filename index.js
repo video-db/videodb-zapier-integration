@@ -26,6 +26,7 @@ import { checkJobStatus } from './searches/read_job.js';
 // Triggers
 import { getVideosTrigger } from './triggers/get_videos.js';
 import { uploadIndexCompletedTrigger } from './triggers/upload_index_completed.js';
+import { generateVideoCompletedTrigger } from './triggers/generate_video_completed.js';
 
 export default {
   version: packageJson.version,
@@ -34,6 +35,7 @@ export default {
   triggers: {
     [getVideosTrigger.key]: getVideosTrigger,
     [uploadIndexCompletedTrigger.key]: uploadIndexCompletedTrigger,
+    [generateVideoCompletedTrigger.key]: generateVideoCompletedTrigger,
   },
   creates: {
     [addWatermark.key]: addWatermark,
@@ -48,12 +50,12 @@ export default {
     [summarizeVideo.key]: summarizeVideo,
     [uploadIndex.key]: uploadIndex,
     [findVideoMoment.key]: findVideoMoment,
+    [checkJobStatus.key]: checkJobStatus
   },
   searches: {
     [getMeetingAssets.key]: getMeetingAssets,
     [getTranscript.key]: getTranscript,
     [getVideoMetadata.key]: getVideoMetadata,
     [videoQna.key]: videoQna,
-    [checkJobStatus.key]: checkJobStatus,
   },
 };

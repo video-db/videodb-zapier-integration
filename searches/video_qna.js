@@ -50,17 +50,7 @@ export const videoQna = {
     ],
     perform,
     sample: {
-      answer:
-        "The video discusses machine learning fundamentals including supervised learning, unsupervised learning, and neural networks. The presenter explains that supervised learning uses labeled data to train models, while unsupervised learning finds patterns in unlabeled data.",
-      highlight_clips: [
-        {
-          stream_url: "https://stream.videodb.io/m-xxxxxxxxx/stream.m3u8",
-          download_url: "https://download.videodb.io/m-xxxxxxxxx/clip.mp4",
-          start_time: 30.0,
-          end_time: 45.0,
-          description: "Explanation of supervised learning concepts",
-        },
-      ],
+      job_id: "job_12345",
     },
   },
 };
