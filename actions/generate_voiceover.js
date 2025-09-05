@@ -1,16 +1,27 @@
-import { VIDEODB_SERVER_API, ApiPath } from "../core/constants.js";
+import { ZAPIER_BACKEND_API, ApiPath } from "../core/constants.js";
 
 const perform = async (z, bundle) => {
-  const data = {
+  const raw = bundle.inputData.target_labels;
+  const targetLabels = Array.isArray(raw)
+    ? raw
+    : typeof raw === "string" && raw.includes(",")
+    ? raw
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean)
+    : raw
+    ? [String(raw)]
+    : [];
+
+  const payload = {
     text: bundle.inputData.text,
-    audio_type: "voice",
     voice_name: bundle.inputData.voice_name,
-    config: bundle.inputData.config,
     callback_url: bundle.inputData.callback_url,
+    target_labels: targetLabels,
   };
 
   const response = await fetch(
-    `${VIDEODB_SERVER_API}/${ApiPath.collection}/default/generate/audio`,
+    `${ZAPIER_BACKEND_API}/${ApiPath.action}/generate_voiceover`,
     {
       method: "POST",
       headers: {
@@ -18,11 +29,11 @@ const perform = async (z, bundle) => {
         "Content-Type": "application/json",
         "x-videodb-client": "videodb-python/0.2.15",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(payload),
     }
   );
-  const result = await response.json();
-  return result;
+
+  return response.json();
 };
 
 export const generateVoiceover = {
@@ -47,6 +58,14 @@ export const generateVoiceover = {
         label: "Voice Name",
       },
       {
+        key: "target_labels",
+        required: false,
+        type: "string",
+        label: "Target Labels",
+        helpText: 'Add one or more labels. Use "Add item" to enter more.',
+        list: true,
+      },
+      {
         key: "callback_url",
         required: false,
         type: "string",
@@ -55,12 +74,7 @@ export const generateVoiceover = {
     ],
     perform,
     sample: {
-      success: true,
-      status: "processing",
-      data: {
-        id: "job-123",
-        output_url: "https://api.videodb.io/async-response/job-123",
-      },
+      job_id: "job_12345",
     },
   },
 };

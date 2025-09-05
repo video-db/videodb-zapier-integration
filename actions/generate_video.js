@@ -18,6 +18,7 @@ const perform = async (z, bundle) => {
     duration: bundle.inputData.duration,
     target_labels: targetLabels,
     aspect_ratio: bundle.inputData.aspect_ratio || "landscape",
+    add_subtitle: bundle.inputData.add_subtitle || false,
   };
 
   const response = await fetch(
@@ -75,6 +76,13 @@ export const generateVideo = {
         helpText: "Output aspect ratio for the generated video",
         choices: ["landscape", "square", "vertical"],
         default: "landscape",
+      },
+      {
+        key: "add_subtitle",
+        required: false,
+        type: "boolean",
+        label: "Add Subtitle",
+        helpText: "Whether to add subtitles to the generated video",
       },
     ],
     perform,

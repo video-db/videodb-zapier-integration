@@ -50,11 +50,11 @@ export default {
     [summarizeVideo.key]: summarizeVideo,
     [uploadIndex.key]: uploadIndex,
     [findVideoMoment.key]: findVideoMoment,
-    [checkJobStatus.key]: checkJobStatus
+    [checkJobStatus.key]: checkJobStatus,
+    [getTranscript.key]: getTranscript,
   },
   searches: {
     [getMeetingAssets.key]: getMeetingAssets,
-    [getTranscript.key]: getTranscript,
     [getVideoMetadata.key]: getVideoMetadata,
     [videoQna.key]: videoQna,
   },

@@ -2,16 +2,6 @@ import { ZAPIER_BACKEND_API, ApiPath } from "../core/constants.js";
 
 const perform = async (z, bundle) => {
   const raw = bundle.inputData.target_labels;
-  const targetLabels = Array.isArray(raw)
-    ? raw
-    : typeof raw === "string" && raw.includes(",")
-    ? raw
-        .split(",")
-        .map((s) => s.trim())
-        .filter(Boolean)
-    : raw
-    ? [String(raw)]
-    : [];
 
   const response = await fetch(
     `${ZAPIER_BACKEND_API}/${ApiPath.action}/generate_subtitles`,
@@ -32,8 +22,6 @@ const perform = async (z, bundle) => {
         font_size: Number(bundle.inputData.font_size) || 16,
         bold:
           bundle.inputData.bold === "true" || bundle.inputData.bold === true,
-        callback_url: bundle.inputData.callback_url,
-        target_labels: targetLabels,
       }),
     }
   );
@@ -133,25 +121,12 @@ export const generateSubtitles = {
         helpText: "Whether caption font is bold",
         default: "false",
       },
-      {
-        key: "callback_url",
-        required: false,
-        type: "string",
-        label: "Callback URL",
-        helpText: "The URL to call when captions are ready",
-      },
-      {
-        key: "target_labels",
-        required: false,
-        type: "string",
-        label: "Target Labels",
-        helpText: 'Add one or more labels. Use "Add item" to enter more.',
-        list: true,
-      },
     ],
     perform,
     sample: {
-      job_id: "job_12345",
+      video_id: "vid_123",
+      stream_url: "https://stream.videodb.io/video/subtitles.mp4",
+      download_url: "https://download.videodb.io/video/subtitles.mp4",
     },
   },
 };

@@ -1,4 +1,4 @@
-import { VIDEODB_SERVER_API } from "./core/constants.js";
+import { ZAPIER_BACKEND_API } from "./core/constants.js";
 export const authentication = {
   type: "custom",
   fields: [
@@ -13,14 +13,13 @@ export const authentication = {
     },
   ],
   test: async (z, bundle) => {
-    const response = await fetch(`${VIDEODB_SERVER_API}/billing/usage`, {
+    const response = await fetch(`${ZAPIER_BACKEND_API}/search/check_user`, {
       headers: {
         "x-access-token": bundle.authData.api_key,
         "Content-Type": "application/json",
-        "x-videodb-client": "videodb-python/0.2.15",
       },
     });
-    const { data } = await response.json();
+    const data = await response.json();
     return {
       email: data.email,
       plan_id: data.plan_id,

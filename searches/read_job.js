@@ -36,8 +36,8 @@ export const checkJobStatus = {
     perform,
     sample: {
       id: "job_12345",
-      status: "completed",
-      output: {},
+      status: "done",
+      output: { video_id: "vid_123" },
       error: null,
     },
   },

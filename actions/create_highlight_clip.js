@@ -13,6 +13,14 @@ const perform = async (z, bundle) => {
     ? [String(raw)]
     : ["multimodal"];
 
+  const payload = {
+    video_id: bundle.inputData.video_id,
+    prompt: bundle.inputData.prompt,
+    content_type: contentTypes,
+    aspect_ratio: bundle.inputData.aspect_ratio || "landscape",
+    add_subtitle: bundle.inputData.add_subtitle || false,
+  };
+
   const response = await fetch(
     `${ZAPIER_BACKEND_API}/${ApiPath.action}/create_highlight_clip`,
     {
@@ -22,11 +30,7 @@ const perform = async (z, bundle) => {
         "Content-Type": "application/json",
         "x-videodb-client": "videodb-python/0.2.15",
       },
-      body: JSON.stringify({
-        video_id: bundle.inputData.video_id,
-        prompt: bundle.inputData.prompt,
-        content_type: contentTypes,
-      }),
+      body: JSON.stringify(payload),
     }
   );
 
@@ -70,12 +74,28 @@ export const createHighlightClip = {
           visual_content: "Visual Content",
           multimodal: "Multimodal",
         },
+        default: "multimodal",
+      },
+      {
+        key: "aspect_ratio",
+        required: false,
+        type: "string",
+        label: "Aspect Ratio",
+        helpText: "Output aspect ratio for the generated clip",
+        choices: ["landscape", "vertical", "square"],
+        default: "landscape",
+      },
+      {
+        key: "add_subtitle",
+        required: false,
+        type: "boolean",
+        label: "Add Subtitle",
+        helpText: "Whether to add subtitles to the generated clip",
       },
     ],
     perform,
     sample: {
-      stream_url: "https://stream.videodb.io/video/highlight_clip.mp4",
-      download_url: "https://download.videodb.io/video/highlight_clip.mp4",
+      job_id: "job-123",
     },
   },
 };

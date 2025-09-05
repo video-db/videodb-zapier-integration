@@ -1,18 +1,15 @@
-import { VIDEODB_SERVER_API } from "../core/constants.js";
+import { ZAPIER_BACKEND_API } from "../core/constants.js";
 
 const perform = async (z, bundle) => {
-  const response = await fetch(
-    `${VIDEODB_SERVER_API}/video?collection_id=default`,
-    {
-      headers: {
-        "x-access-token": bundle.authData.api_key,
-        "Content-Type": "application/json",
-      },
-    }
-  );
+  const response = await fetch(`${ZAPIER_BACKEND_API}/search/get_videos`, {
+    headers: {
+      "x-access-token": bundle.authData.api_key,
+      "Content-Type": "application/json",
+    },
+  });
 
   const data = await response.json();
-  return data.data.videos;
+  return data.videos;
 };
 
 export const getVideosTrigger = {
