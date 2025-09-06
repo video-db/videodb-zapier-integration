@@ -1,6 +1,18 @@
 import { ZAPIER_BACKEND_API, ApiPath } from "../core/constants.js";
 
 const perform = async (z, bundle) => {
+  const raw = bundle.inputData.target_labels;
+  const targetLabels = Array.isArray(raw)
+    ? raw
+    : typeof raw === "string" && raw.includes(",")
+    ? raw
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean)
+    : raw
+    ? [String(raw)]
+    : [];
+
   const response = await fetch(
     `${ZAPIER_BACKEND_API}/${ApiPath.action}/auto_chapter`,
     {
@@ -13,6 +25,8 @@ const perform = async (z, bundle) => {
       body: JSON.stringify({
         video_id: bundle.inputData.video_id,
         prompt: bundle.inputData.prompt,
+        callback_url: bundle.inputData.callback_url,
+        target_labels: targetLabels,
       }),
     }
   );
@@ -42,31 +56,26 @@ export const autoChapter = {
         required: true,
         type: "string",
         label: "Prompt",
-        helpText: "Prompt to guide chapter generation",
+        helpText: "The prompt to use for chapter generation",
+      },
+      {
+        key: "callback_url",
+        required: false,
+        type: "string",
+        label: "Callback URL",
+        helpText:
+          "The URL to call when the chapter generation is ready (optional)",
+      },
+      {
+        key: "target_labels",
+        required: false,
+        type: "string",
+        label: "Target Labels",
+        helpText: "Add one or more labels.",
+        list: true,
       },
     ],
     perform,
-    sample: {
-      chapters: [
-        {
-          title: "Introduction",
-          description: "Overview of the topic",
-          start_time: 0,
-          end_time: 120,
-        },
-        {
-          title: "Main Content",
-          description: "Detailed explanation of concepts",
-          start_time: 120,
-          end_time: 480,
-        },
-        {
-          title: "Conclusion",
-          description: "Summary and closing remarks",
-          start_time: 480,
-          end_time: 600,
-        },
-      ],
-    },
+    sample: { job_id: "job_12345" },
   },
 };

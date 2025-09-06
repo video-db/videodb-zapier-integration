@@ -1,6 +1,18 @@
 import { ZAPIER_BACKEND_API, ApiPath } from "../core/constants.js";
 
 const perform = async (z, bundle) => {
+  const raw = bundle.inputData.target_labels;
+  const targetLabels = Array.isArray(raw)
+    ? raw
+    : typeof raw === "string" && raw.includes(",")
+    ? raw
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean)
+    : raw
+    ? [String(raw)]
+    : [];
+
   const response = await fetch(
     `${ZAPIER_BACKEND_API}/${ApiPath.action}/auto_dub`,
     {
@@ -13,6 +25,8 @@ const perform = async (z, bundle) => {
       body: JSON.stringify({
         video_id: bundle.inputData.video_id,
         language_code: bundle.inputData.language_code,
+        callback_url: bundle.inputData.callback_url,
+        target_labels: targetLabels,
       }),
     }
   );
@@ -39,21 +53,28 @@ export const autoDub = {
       },
       {
         key: "language_code",
-        required: true,
+        required: false,
         type: "string",
         label: "Language Code",
-        helpText:
-          'Language code for dubbing (e.g., "es" for Spanish, "fr" for French)',
+        helpText: 'The language code for dubbing (defaults to "en")',
+      },
+      {
+        key: "callback_url",
+        required: false,
+        type: "string",
+        label: "Callback URL",
+        helpText: "The URL to call when the dubbing is ready (optional)",
+      },
+      {
+        key: "target_labels",
+        required: false,
+        type: "string",
+        label: "Target Labels",
+        helpText: "Add one or more labels.",
+        list: true,
       },
     ],
     perform,
-    sample: {
-      id: "dub_12345",
-      collection_id: "default",
-      stream_url: "https://stream.videodb.io/video/dubbed_video.mp4",
-      download_url: "https://download.videodb.io/video/dubbed_video.mp4",
-      name: "Dubbed Video",
-      length: "00:05:30",
-    },
+    sample: { job_id: "job_12345" },
   },
 };
