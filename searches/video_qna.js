@@ -17,7 +17,7 @@ const perform = async (z, bundle) => {
     }
   );
 
-  return response.json();
+  return [response.json()];
 };
 
 export const videoQna = {
