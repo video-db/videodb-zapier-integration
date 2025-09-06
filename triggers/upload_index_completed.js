@@ -82,6 +82,8 @@ export const uploadIndexCompletedTrigger = {
       thumbnail_url: "https://example.com/thumb.jpg",
       length: 120.5,
       stream_url: "https://example.com/stream.m3u8",
+      player_url:
+        "https://console.videodb.io/player?url=https://example.com/stream.m3u8",
       download_url: "https://example.com/download.mp4",
       index_id: "idx_123",
       index: [

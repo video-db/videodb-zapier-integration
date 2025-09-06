@@ -53,7 +53,7 @@ export const generateVideoCompletedTrigger = {
   key: "generate_video_completed",
   noun: "Generated Video",
   display: {
-    label: "Generated Video Completed",
+    label: "AI-Generated Video Created",
     description: "Triggers when an AI-generated video job completes.",
   },
   operation: {
@@ -76,6 +76,8 @@ export const generateVideoCompletedTrigger = {
       id: "sample-job-id",
       collection_id: "col_123",
       stream_url: "https://example.com/stream.m3u8",
+      player_url:
+        "https://console.videodb.io/player?url=https://example.com/stream.m3u8",
       download_url: "https://example.com/download.mp4",
       name: "Sample Generated Video",
       length: "120.5",
@@ -89,6 +91,8 @@ export const generateVideoCompletedTrigger = {
           end_time: 8.0,
           video_id: "vid_123",
           stream_url: "https://example.com/scene1.m3u8",
+          player_url:
+            "https://console.videodb.io/player?url=https://example.com/scene1.m3u8",
           download_url: "https://example.com/scene1.mp4",
           prompt: "A beautiful sunset over the ocean",
         },
@@ -100,6 +104,8 @@ export const generateVideoCompletedTrigger = {
           end_time: 16.0,
           video_id: "vid_124",
           stream_url: "https://example.com/scene2.m3u8",
+          player_url:
+            "https://console.videodb.io/player?url=https://example.com/scene2.m3u8",
           download_url: "https://example.com/scene2.mp4",
           prompt: "Waves crashing on the shore",
         },
